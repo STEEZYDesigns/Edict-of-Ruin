@@ -18,7 +18,9 @@ EXP -- will be updayed, monsters can drop EXP, quests can grant EXP
 Money -- will be updated, monsters will drop ranges of money, can use to buy items at certain areas.
 
 Decision making for the story, I will try to make a diverse storyline that gie replay value.
+
 2/12/2020
+
 I only plan to work on this "intensely" for about a month. This is more of a learning project, while experimenting with how much functionality I can achieve with pure HTML, CSS, and Javascript.
 I do not have a current plan for a database, so progress and accounts will not be kept
 Currently I have an HTML page and CSS styling done for "battle" pages. I will also have to learn to generalize this through Javascript.
