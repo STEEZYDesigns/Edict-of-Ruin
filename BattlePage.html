@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" lang="en">
+    <link href="ItemDescriptions.JS" rel="javascript" type="text/javascript">
+    <link href="BattlePageStyle.CSS" rel="stylesheet" type="text/css">
+    <title> Battle Page </title> <!-- default, Battle Page ;;; Can be changed in JS to say the enemy name -->
+
+</head>
+
+<body>
+    <!-- <div height=3em>Whitespace small upper chunk </div> -->
+    <main>
+        <section class="EnemyScreen"> <!-- should take 2/3 of the screen. The other 1/3 will be for player interactions.-->
+            <div class="EnemyDisplay"> <!-- "Tucked in", 98% height / width of parent. Background image of enemy-->
+                 <div class="NEXTAction"> <!-- displays who will be taking the next action-->
+                    <label> NEXT: </label>
+                    <div class="NEXTList"></div> <!-- Here will be who will be attacking next or in order -->
+                 </div>
+                 <div class="Enemy"> <!-- This is the enemies information display -->
+                    <div class="HPName">
+                        <label class="HP"> HP </label> 
+                        <label class="EnemyName"> Whinter Snek </label>
+                    </div>
+                     <div class="HPBar"></div> <!-- HP Bar should change in size to represent how much health the enemy had -->
+                     <div class="EnemyEffNBuff"></div> <!-- I should upload icons that represent buffs and effects-->
+                 </div>
+            </div>
+        </section>
+
+        <section class="PlayerScreen"> <!-- Player Hand and Battle Info -->
+            <div class="PlayerDisplay">
+                <div class="Hand"> <!-- Hand that hold attack and consumables -->
+                    <div class="DeckInfo"> <!-- label -->
+                        Deck:
+                    </div>
+                    <div class="Card"></div> <!-- Hand can hold 4 Cards, Cards are Attack and Consumables -->
+                </div>
+            <div class="PlayerInfo">
+                <div class="PlayerStats">
+                    <div class="PlayerName"> Player </div>
+                    <div class="PlayerBattleStats">
+                        <ul>
+                            <li> HP </li>
+                            <li> (0) / (150) </li>
+                            <li> MP </li>
+                            <li> (0) / (0) </li>
+                            <li> Deck </li>
+                            <li> (#) </li>
+                        </ul>
+                    </div>
+                </div> <!-- Player Health and Stats -->
+                    
+                <div class="PlayerEffNBuff"> 
+                    <div class="Effects"> Effects </div>
+                    <div class="Buffs"> Buffs </div>
+                </div>
+
+            </div> <!-- Effect and Buffs on Player -->
+
+            </div>
+        </section>
+    </main>
+
+</body>
+
+
+
+</html>
