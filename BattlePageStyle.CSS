@@ -1,0 +1,197 @@
+
+html {
+    font-size: 12px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: black;
+    opacity: 0.9;
+    justify-content: center;
+    max-width: 1500px;
+    max-height: 800px;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 15px;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+}
+/* layer 1, background*/
+main .EnemyScreen {
+    display: inline-flex;
+    position: relative;
+    height: 500px;
+    width: 1500px;
+    z-index: 0; /* background */
+    background-color: crimson;
+    justify-content: center;
+    
+}
+
+.EnemyDisplay {
+    display: inline-flex;
+    position: relative;
+    height: 100%;
+    width: 98.5%;
+    background-color: antiquewhite;
+    background-image: url("WhiteSnake.jpeg");
+    background-repeat: no-repeat;
+    background-size: 90% 100%;
+}
+
+.NEXTAction {
+    background-color: aliceblue;
+    display: inline-flex;
+    position: relative;
+    height: 100%;
+    width: 10%;
+    opacity: 0.8;
+    font-style: italic;
+    z-index: 100;
+}
+
+.NEXTAction label {
+    display: inline-flex;
+    position: relative;
+    height: 1em;
+    width: 0%;
+}
+
+.NEXTList {
+    display: inline-flex;
+    position: relative;
+    flex-direction: column;
+    align-items: flex-end;
+    height: 95%;
+    width: 100%;
+    border: 2px solid salmon;
+    margin-top: 1.8em;
+}
+
+.Enemy {
+    display: inline-flex;
+    position: relative;
+    height: 35px;
+    width: 500px;
+    background-color: black;
+    color: aliceblue;
+    margin: 10px;
+    z-index: 100;
+    padding: 5px;
+}
+
+.HPName {
+    width: 120px;
+    font-style: oblique;
+}
+
+.HP {
+    display: inline-block;
+    width: 100%;
+}
+
+.EnemyName {
+    justify-content: space-around;
+    align-items: center;
+    display: inline-block;
+    width: 100%;
+}
+
+.HPBar {
+    display: inline-flex;
+    background-color: firebrick;
+    width: 180px;
+    height: 100%;
+}
+
+.EnemyEffNBuff {
+    display: inline-flex;
+    background-color: aqua;
+    width: 200px;
+    height: 100%;
+}
+
+.PlayerScreen {
+    display: inline-flex;
+    position: relative;
+    width: 1500px;
+    height: 225px;
+    background-color: darkseagreen;
+}
+
+.PlayerDisplay {
+    display: inline-flex;
+    position: relative;
+    width: 1500px;
+    height: 225px;
+
+}
+
+.DeckInfo {
+    width: 0%;
+    height: 0%;
+}
+
+.Hand {
+    width: 65%;
+    height: 100%;
+
+}
+
+.Card {
+    height: 15em;
+    width: 12em;
+    background-color: aliceblue;
+    margin: 25px;
+    
+}
+
+.PlayerInfo {
+    display: inline-flex;
+    position: relative;
+    width: 35%;
+    height: 98%;
+}
+
+.PlayerStats {
+    display: inline-flex;
+    position: relative;
+    height: 98%;
+    width: 50%;
+    background-color: darkslategrey;
+    margin: 1%;
+
+}
+
+.PlayerBattleStats li {
+    list-style: none;
+}
+
+.PlayerName {
+    width: 100%;
+    height: 1em;
+}
+
+.PlayerEffNBuff {
+    width: 35%;
+    height: 98%;
+    background-color: yellowgreen;
+    margin: 3px;
+}
+
+.Effects {
+    display: inline-flex;
+    position: relative;
+    height: 50%;
+    width: 100%;
+}
+
+.Buffs {
+    display: inline-flex;
+    position: relative;
+    height: 50%;
+    width: 100%;
+}
