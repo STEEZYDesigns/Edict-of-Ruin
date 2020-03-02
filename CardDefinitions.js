@@ -30,8 +30,7 @@ function BASECARD() {
     this.id = 0;
     this.description = "sample text, " + this.attack + " atk \n" + this.defend + " def \n" + this.itemStored + 
     " itemstored \n" + this.rankItem + " rankItem.";
-    this.attack = false;
-    this.defend = false;
+    this.Effect = "none";
 
     //itemStored is a property that will allow for collecting of cards.
     //when false, this means it is a card that has just "spawned" as a reward, through battle or through a quest
@@ -45,16 +44,15 @@ function BASECARD() {
 //Battle Consumables. rank will be === 89, special rank. Multi Use, stay in the deck. cannot be chained.
 function ItemCard() {
     BASECARD.call(this);
+    description: "Item Card: sample text \n these item cards are consumable";
+    this.rankItem = 89;
 }
 ItemCard.prototype = Object.create(BASECARD.prototype);
 Object.defineProperty(ItemCard.prototype, 'constructor', {
     value: ItemCard,
     enumerable: false,
     writable: true,
-    attack: false,
-    defense: false,
-    description: "Item Card: sample text \n these item cards are consumable",
-    rankItem: 89
+    
 })
 
 
@@ -71,7 +69,7 @@ function AttackCard() {
     BASECARD.call(this);
     
     this.attackRange = 0; //attR multiplies damage output based on Player stat
-    this.attack = true; //need a true value to allow it to be an attack card
+    this.Effect = "attack"; //need a true value to allow it to be an attack card
     this.description = "Attack Card: sample text \n these attack cards are reusable in battle.";
     this.rankItem = 1; //all attacks are between rank 1 and 9
 }
@@ -87,7 +85,7 @@ function DefenseCard() {
     BASECARD.call(this);
 
     this.defenseRange = 0; //defR is a solid check against damage Enemy does. Threshold must be passed.
-    this.defense = true; //need a true value to allow it to be a defense card
+    this.Effect = "defense"; //need a true value to allow it to be a defense card
     this.description = "Defense Card: sample text \n these defense cards are reusable in battle.";
     this.rankItem = 20; // special rank 10. above attacks. kind of like html status codes
 }
@@ -101,10 +99,12 @@ Object.defineProperty(DefenseCard.prototype, 'constructor', {
 function EscapeCard() {
     BASECARD.call(this);
 
+    this.name = "Escahpey";
     this.description = "Activate this card to try to escape the battle. Your and your enemy's SPEED affects the probability of success.";
     this.rankItem = 99; //Special return rank. Nothing should be above this card.
     this.escape = true; //Special value. Does not apply to any other object.
     this.id = 999;
+    this.Effect = "Escape";
 }
 EscapeCard.prototype = Object.create(BASECARD.prototype);
 Object.defineProperty(EscapeCard.prototype, 'constructor', {
@@ -121,9 +121,12 @@ Object.defineProperty(EscapeCard.prototype, 'constructor', {
 */
 function SpecialAttack() {
     AttackCard.call(this);
-    this.attackRange = 4;
+    this.name = "SpecialAttack";
+    this.Effect = "attack";
+    this.attackRange = 2.25;
     this.rankItem = 4;
-    this.description = "Special Attack, in BK, first one we had was 'Blue Storm'."
+    this.description = "Special Attack, in BK, first one we had was 'Blue Storm'.";
+    this.id = 6;
 }
 SpecialAttack.prototype = Object.create(AttackCard.prototype);
 Object.defineProperty(SpecialAttack, 'constructor', {
@@ -177,7 +180,6 @@ function BattleConsumable() {
 
     //default effect of none, like drinking water in the game, which i wont code. just an example.
     this.Statbuff = "none"; // descriptor of buff it gives. HP, MP, HP Restore, Attack, Defense, etc etc
-    this.Effect = "none";
     this.rankItem = 89; //special rank. a higher rank than attack, defense, special attacks, 
                          // rank is the same as Escape, though escape is not treated as a BattleConsumable 
                          //and will instead try to flee from battle.
@@ -229,41 +231,50 @@ Object.defineProperty(WildCard.prototype, 'constructor', {
 });
 
 
+
+
+
+
 /* HOW DO I CONSTRUCT A 'DECK' THAT WILL HOLD OBJECTS UNTIL THEY RUN OUT AS THE USER
 USES THEM, THEN REFILL ITSELF */
 
-//let us try a deck function, passing in parameter 'n', where 'n' will be the available size of the eck
+//let us try a deck f(x) / object, passing in parameter 'n', where 'n' will be the available size of the deck
 //Baten Kaitos started with a limit of like 15 or 20, and a "hand" of 3 cards
 function Deck(n) {
     this.name = "Deck";
-    this.hold = true;
+    this.hold = true; //unsure what i can do with a variable like this. does not hurt to have.
     this.empty = 0; //a 0 is false, anything else is true. If true, then must do default deck
     this.size = n;
 
-    //array of objects?
+    //array of objects? predetermined sizes for now.
     this.__deck__ = [];
-    this.dealt_cards = [];
+    
+    //Deck hold hand? or hand holds deck????
+    
+    /*
+    this.dealt_cards = [3];
+    this.dealt_cards = new PlayerHand(); 
+    */
 
     //default deck that a player starts the game with. Can be customized later.
     //testing different ways of loading the deck... 
     this.defaultDeck = function() {
-        for (let i=0; i<10; i++) {
+        for (let i=0; i<=10; i++) {
             //we want to give 3 of each basic attack.
             if (i < 3)
             this.__deck__[i] = new Dagger();
             else if (i >=3 && i < 6) 
             this.__deck__[i] = new Shortsword();
-            else if (i >= 6 && i < 10) 
+            else if (i >= 6 && i < 9) 
             this.__deck__[i] = new Longsword();
-            else if (i >= 10) //one Special Attack. 
+            else if (i === 9) //one Special Attack. 
             this.__deck__[i] = new SpecialAttack();
+            else if (i === 10) //one HealthPotion
+            this.__deck__[i] = new SmallHealthPotion();
         }
 
-        for (let i=10; i<15; i++) {
+        for (let i=11; i<15; i++) {
             switch (i) {
-                case 10:
-                    this.__deck__[i] = new SpecialAttack();
-                    break;
                 case 11:
                     this.__deck__ [i] = new LeatherShield();
                     break;
@@ -276,10 +287,79 @@ function Deck(n) {
                 case 14: 
                     this.__deck__[i] = WildCard();
                     break;
-                case 15:
-                    this.__deck[i] = new SmallHealthPotion();
-                    break;
+            }
+        }  
+    }
+
+    this.DeckShuffle = function() {
+        
+        let current_index = this.__deck__.length-1;
+        
+        let temp_val;
+        let rand_index;
+        while (current_index != 0) {
+            
+            //console.log("CI" + current_index);
+            let rand_index = Math.floor(Math.random() * current_index);
+            //console.log("RI" + rand_index);
+            current_index -= 1;
+            //console.log("Start");
+
+            //console.log(this.__deck__[current_index]);
+            //console.log(this.__deck__[rand_index]);
+
+
+            temp_val = this.__deck__[current_index];
+            //console.log(temp_val);
+
+            this.__deck__[current_index] = this.__deck__[rand_index];
+            this.__deck__[rand_index] = temp_val;
+
+            /*
+            console.log("new current then rand.");
+            console.log(this.__deck__[current_index]);
+            console.log(this.__deck__[rand_index]);
+            */
+           if (current_index === 0) {
+                
             }
         }
     }
+
+    this.Hand = {
+        name: "Hand",
+        empty: 0, //a 0 is false, anything else is true. If true, then must do default deck
+        size: 3,
+        handDealt: []
+    }
+
+    this.PlayerHand = this.Hand;
+
+    this.dealHand = function() {
+        console.log("dealing hand")
+        for (let i = 0; i < this.PlayerHand.size; i++) {
+            let dealt_card = this.__deck__.shift();
+            this.PlayerHand.handDealt.push(dealt_card);
+        }
+    }
+
 }
+Object.defineProperty(Deck.prototype, 'constructor', {
+    value: Deck,
+    enumerable: true,
+    writable: false
+});
+/*
+function PlayerHand(handSize) {
+    this.name = "Hand";
+    this.hold = true;
+    this.empty = 0; //a 0 is false, anything else is true. If true, then must do default deck
+    this.size = handSize;
+}
+PlayerHand.prototype = Object.create(Deck.prototype);
+Object.defineProperty(PlayerHand.prototype, 'constructor', {
+    value: PlayerHand,
+    enumerable: true,
+    writable: false
+});
+*/
