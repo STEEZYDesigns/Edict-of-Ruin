@@ -11,7 +11,8 @@
 
 function Dagger() { //first inherited object. 
     AttackCard.call(this);
-    this.attackRange = 1;
+    this.name = "Dagger";
+    this.attackRange = 1.3;
     this.rankItem = 1;
     this.description = "A small dagger, yo ***** is probably (not) bigger than this thing."
     this.id = 1;
@@ -26,9 +27,10 @@ Object.defineProperty(Dagger.prototype, 'constructor', {
 
 function Shortsword() {
     AttackCard.call(this);
-    this.attackRange = 2;
+    this.name = "Shortsword";
+    this.attackRange = 1.6;
     this.rankItem = 1;
-    this.description = "Swing it, little girls might run away from your terror."
+    this.description = "Swing it, little girls might run away from your terror.";
     this.id = 2;
 }
 Shortsword.prototype = Object.create(AttackCard.prototype);
@@ -40,9 +42,10 @@ Object.defineProperty(Shortsword.prototype, 'constructor', {
 
 function Longsword() {
     AttackCard.call(this);
-    this.attackRange = 3;
+    this.name = "Longsword";
+    this.attackRange = 1.9;
     this.rankItem = 1;
-    this.description = "Longsword? More like crap generic sword made of tinfoil. Who the heck made this, fire them."
+    this.description = "Longsword? More like crap generic sword made of tinfoil. Who the heck made this, fire them.";
     this.id = 3;
 }
 Longsword.prototype = Object.create(AttackCard.prototype);
@@ -59,8 +62,11 @@ Object.defineProperty(Longsword.prototype, 'constructor', {
 //defense cards have a rankItem of 20 so they cannot be used between attacks. 
 function LeatherShield() {
     DefenseCard.call(this);
+    this.name = "LeatherShield";
     this.defenseRange = 2;
     this.id = 4;
+    this.description = "some plywood and a skinned animal but hey would you rather use your bare arm";
+    this.rankItem = 2;
 }
 LeatherShield.prototype = Object.create(DefenseCard.prototype);
 Object.defineProperty(LeatherShield.prototype, 'constructor', {
@@ -72,10 +78,13 @@ Object.defineProperty(LeatherShield.prototype, 'constructor', {
 //should i pass in the Player?
 function SmallHealthPotion() {
     BattleConsumable.call(this);
-    this.Statbuff = "HP Restore";
-    this.Effect = 20;
+    this.name = "Small HP"
+    this.Effect = "HPRES"; // HP Restore
     this.description = "Made of the least potent Senzu Beans. That good trim!";
     this.id = 5;
+    this.StatBuff = 20; //StatBuff simply refers to the base number this item will work off
+    // statbuff will be according to what kind of item. i.e. atk statbuff will range from 1-3 multiplier
+    // HP ranges up to the max health your player has.
 }
 SmallHealthPotion.prototype = Object.create(BattleConsumable.prototype);
 Object.defineProperty(SmallHealthPotion.prototype, 'constructor', {
