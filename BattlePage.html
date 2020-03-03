@@ -49,30 +49,37 @@
                     <div class="Card"></div>
                     <div class="Card"></div>
                 </div>
-            <div class="PlayerInfo">
-                <div class="PlayerStats">
-                    <div class="PlayerName"> Player </div>
-                    <div class="PlayerBattleStats">
-                        <ul>
-                            <li> HP </li>
-                            <li id="PlayerHP"> (0) / (25) </li>
-                            <li> Armor </li>
-                            <li id="PlayerArmor"> (0) / (0) </li>
-                            <li> Deck </li>
-                            <li> (#) </li>
-                            <li> Battle Time </li>
-                            <li id="Timer"> 0:00:00 </li>
-                        </ul>
-                    </div>
-                </div> <!-- Player Health and Stats -->
-                    
-                <div class="PlayerEffNBuff"> 
-                    <div class="Effects"> Effects </div>
-                    <div class="Buffs"> Buffs </div>
+
+                <div id="BattleTimer"> 
+                    <span> 5:00 </span> <!-- 5 seconds to make your next card choice. -->
                 </div>
 
-            </div> <!-- Effect and Buffs on Player -->
+                <div class="DeckBox">
+                    <!-- image of the back of a card. display: none when empty.-->
+                </div>
 
+                <div class="PlayerInfo">
+                    <div class="PlayerStats">
+                        <div class="PlayerName"> Player </div>
+                        <div class="PlayerBattleStats">
+                            <ul>
+                                <li> HP </li>
+                                <li id="PlayerHP"> (0) / (25) </li>
+                                <li> Armor </li>
+                                <li id="PlayerArmor"> (0) / (0)</li>
+                                <li> Deck </li>
+                                <li> (#) </li>
+                                <li> Battle Time </li>
+                                <li id="Timer"> 0:00:00 </li>
+                            </ul>
+                        </div>
+                    </div> <!-- Player Health and Stats -->
+                        
+                    <div class="PlayerEffNBuff"> 
+                        <div class="Effects"> Effects </div>
+                        <div class="Buffs"> Buffs </div>
+                    </div>
+                </div> <!-- Effect and Buffs on Player -->
             </div>
         </section>
     </main>
