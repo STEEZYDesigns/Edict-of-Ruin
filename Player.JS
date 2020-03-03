@@ -40,6 +40,26 @@ function Player() {
     this.AttackBuffed = false;
     this.DefenseBuffed = false;
     this.HealthBuffed = false;
+
+    this.getPlayerHealth = () => {
+        return this.Stats.health;
+    }
+    this.setPlayerHealth = healthAffect => {
+        this.Stats.health += healthAffect;
+    }
+    this.getPlayerDefense = () => {
+        return this.Stats.defense;
+    }
+    this.setPlayerDefense = defenseAffect => {
+        this.Stats.defense += defenseAffect;
+    }
+    this.getPlayerAttack = () => {
+        return this.Stats.attack;
+    }
+    this.setPlayerAttack = attackAffect => {
+        this.Stats.Attack *= attackAffect;
+    }
+    
 }
 Player.prototype = Object.create(BASE_ENTITY.prototype);
 Object.defineProperty(Player.prototype, 'constructor', {
@@ -48,24 +68,6 @@ Object.defineProperty(Player.prototype, 'constructor', {
     writable: false,
 });
 
-let getPlayerHealth = () => {
-    return PLAYER.Stats.health;
-}
-let setPlayerHealth = healthAffect => {
-    PLAYER.Stats.health += healthAffect;
-}
-let getPlayerDefense = () => {
-    return PLAYER.Stats.defense;
-}
-let setPlayerDefense = defenseAffect => {
-    PLAYER.Stats.defense += defenseAffect;
-}
-let getPlayerAttack = () => {
-    return PLAYER.Stats.attack;
-}
-let setPlayerAttack = attackAffect => {
-    PlayerAttack *= attackAffect;
-}
 
 //Enemies will generally have only a a few attacks and MAYBE one or two specials.
 // So we can say something like WeakAttack, MediumAttack, StrongAttack, SpecialAttack, and just one of each object

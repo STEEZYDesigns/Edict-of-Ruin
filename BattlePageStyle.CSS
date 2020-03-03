@@ -151,6 +151,12 @@ main .EnemyScreen {
     font-size: 1em;
 }
 
+#BattleTimer {
+    font-size: 1.5em;
+    font-weight: 600;
+    font-style: italic;
+}
+
 .PlayerInfo {
     display: inline-flex;
     position: relative;

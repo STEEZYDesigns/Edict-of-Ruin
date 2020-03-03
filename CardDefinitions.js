@@ -326,20 +326,13 @@ function Deck(n) {
         }
     }
 
-    this.Hand = {
-        name: "Hand",
-        empty: 0, //a 0 is false, anything else is true. If true, then must do default deck
-        size: 3,
-        handDealt: []
-    }
-
-    this.PlayerHand = this.Hand;
-
+    
+    this.Hand = [];
     this.dealHand = function() {
         console.log("dealing hand")
-        for (let i = 0; i < this.PlayerHand.size; i++) {
+        for (let i = 0; i < 3; i++) { //3 is how many the player can CURRENTLY use, BK had a system of leveling up your hand
             let dealt_card = this.__deck__.shift();
-            this.PlayerHand.handDealt.push(dealt_card);
+            this.Hand.push(dealt_card);
         }
     }
 
