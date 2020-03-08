@@ -88,26 +88,26 @@ main .EnemyScreen {
     font-style: oblique;
 }
 
-.EnemyHP {
+#EnemyHP {
     display: inline-block;
     width: 100%;
 }
 
-.EnemyName {
+#EnemyName {
     justify-content: space-around;
     align-items: center;
     display: inline-block;
     width: 100%;
 }
 
-.HPBar {
+#HPBar {
     display: inline-flex;
     background-color: firebrick;
     width: 180px; /* This is what will be changing when damage is taken.*/
     height: 100%;
 }
 
-.EnemyEffNBuff {
+#EnemyEffNBuff {
     display: inline-flex;
     background-color: aqua;
     width: 200px;
